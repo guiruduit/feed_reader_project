@@ -14,7 +14,9 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     (r'^admin/', include(admin.site.urls)),
     (r'^$', 'feed_reader_app.views.lista_feeds'),
-    (r'^adiciona_feader/$', 'feed_reader_app.views.adiciona_feader')
+    (r'^adiciona_feader/$', 'feed_reader_app.views.adiciona_feader'),
+    (r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'login.html'}),
+    (r'^logout/$', 'django.contrib.auth.views.logout_then_login', {'login_url': '/login/'}),
 )
 
 from django.conf import settings

@@ -5,12 +5,14 @@ from models import Feader
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def adiciona_feader(request):
     if request.method == 'POST':
         post = request.POST
         if post['url_feader']:
-            Feader.objects.create(url=post['url_feader'])
+            Feader.objects.create(url=post['url_feader'], user=request.user)
     return HttpResponseRedirect('/')
 
 def __quicksort(vetor, campo):
@@ -48,10 +50,11 @@ def __compare_datetimes(date1, date2):
     else:
         return 'lower'
 
+@login_required
 def lista_feeds(request):
     feaders = []
     feeds = []
-    feaders_objects = Feader.objects.all()
+    feaders_objects = Feader.objects.filter(user=request.user)
     for feader in feaders_objects:
         feaders.append(feader.get_feader_data())
         feeds = feeds + feader.get_feeds()

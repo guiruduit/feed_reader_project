@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # Django:
 from django.db import models
+from django.contrib.auth.models import User
 # Python:
 import feedparser
 from datetime import datetime
@@ -8,7 +9,8 @@ from datetime import datetime
 class Feader(models.Model):
     """
     # get_feader_data():
-    >>> baguete = Feader.objects.create(url="feed_reader_app/__baguete.xml")
+    >>> guilherme = User.objects.create(username="guilherme")
+    >>> baguete = Feader.objects.create(url="feed_reader_app/__baguete.xml", user=guilherme)
     >>> b = baguete.get_feader_data()
     >>> b['title']
     u"Baguete - \\xdaltimas not\\xedcias"
@@ -35,7 +37,8 @@ class Feader(models.Model):
     >>> print first_feed['date']
     2011-01-12 11:56:24
     """
-    url = models.CharField(max_length=200)
+    url = models.CharField(max_length=200, unique=True)
+    user = models.ForeignKey(User)
 
     feader_xml = ''
 

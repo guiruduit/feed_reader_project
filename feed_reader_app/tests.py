@@ -4,28 +4,35 @@ from django.test import TestCase
 # views tests:
 from django.test.client import Client
 from models import Feader
+from django.contrib.auth.models import User
 from views import lista_feeds
 
 class TestAdicionaFeader(TestCase):
 
     client = None
+    user = None
 
     def setUp(self):
         self.client = Client()
+        self.user = User.objects.create_user(username='guilherme', email='gui@mail.com', password='1')
+        self.client.login(username='guilherme', password='1')
 
     def test_adiciona_feader(self):
-        tam = len(Feader.objects.all())
+        tam = len(Feader.objects.filter(user=self.user))
         response = self.client.post('/adiciona_feader/', {'url_feader': '__baguete'})
-        self.failUnlessEqual(tam + 1, len(Feader.objects.all()))
+        self.failUnlessEqual(tam + 1, len(Feader.objects.filter(user=self.user)))
 
 class TestListaFeeds(TestCase):
 
     client = None
     response = None
+    user = None
 
     def setUp(self):
-        baguete = Feader.objects.create(url="feed_reader_app/__baguete.xml")
         self.client = Client()
+        self.user = User.objects.create_user(username='guilherme', email='gui@mail.com', password='1')
+        self.client.login(username='guilherme', password='1')
+        baguete = Feader.objects.create(url="feed_reader_app/__baguete.xml", user=self.user)
 
     def testa_lista_feeds(self):
         self.response = self.client.get('/', {})
