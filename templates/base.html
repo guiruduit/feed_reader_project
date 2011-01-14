@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset=utf-8>
+
+        <title>Feed Reader</title>
+
+        {% block meta %}
+        <meta name="keywords" content="keywords, here" />
+        <meta name="description" content="your description here" />
+        {% endblock meta %}
+
+        {% block script %}
+        <script src="{{ MEDIA_URL }}js/modernizr-1.1.min.js"></script><!-- this is the javascript allowing html5 to run in older browsers -->
+        <script src="{{ MEDIA_URL }}js/jquery.js"></script>
+		<script type="text/javascript">
+            $(document).ready(function(){
+                $(".feed").click(function(){
+                    var c = $(this).children('.feed_content').val();
+                    $("#conteudo").html(c);
+                });
+            });
+		</script>
+        {% block jquery %}{% endblock jquery %}
+        {% endblock script %}
+
+        {% block style %}
+        <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}reset.css" media="screen" title="html5doctor.com Reset Stylesheet" />
+        <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}style.css" media="screen" />
+        {% endblock style %}
+    </head>
+    <body>
+        <div id='container'>
+            {% block lista_feeds %}
+                <!-- lista_feeds -->
+            {% endblock lista_feeds %}
+        </div>
+    </body>
+</html>

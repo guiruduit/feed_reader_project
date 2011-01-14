@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset=utf-8>
+
+        <title>Feed Reader</title>
+
+        <meta name="keywords" content="keywords, here" />
+        <meta name="description" content="your description here" />
+
+        <script src="js/modernizr-1.1.min.js"></script><!-- this is the javascript allowing html5 to run in older browsers -->
+		<script src="js/jquery.js"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+		<script type="text/javascript">
+            $(document).ready(function(){
+                $("#feed").click(function(){
+                    var c = $(this).children('#feed_description').val();
+                    $("#feed_content").html(c);
+                });
+            });
+		</script>
+
+        <link rel="stylesheet" type="text/css" href="reset.css" media="screen" title="html5doctor.com Reset Stylesheet" />
+        <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+    </head>
+    <body>
+
+			
+        <div id='container'>
+
+			<section id='lista_feaders'>
+				<div class="feader a" id="form_url_feader">
+					
+						<form method='POST'>
+                    		<input id='url_entry' type="url" placeholder="Insira a URL aqui" name='url_feader' id='url_feader' /><!-- autofocus -->
+                    		<button id='button' type='submit' value="Enviar">Adicionar</button>
+                		</form>
+					
+				</div>
+				<div class="feader b"><span class="feader_title">Baguete</span></div>
+				<div class="feader a"><span class="feader_title">Terra</span></div>
+			</section>
+
+            <section id='lista_feeds'>
+                    	<div class="feed b" id="feed">
+                    		<span class="feed_title">CORREÇÃO Besouro "perigoso" é achado no aeroporto de Los Angeles</span>
+							<span class="feed_date">Sun, 09 Jan 2011 11:01:21 -0200</span>
+                            <input type="hidden" class="feed_description" value="Valor do Feed" />
+						</div>
+						<div class="feed a" id="feed">
+                    		<span class="feed_title">Carla Bruni nega intervenção para evitar extradição de Battisti</span>
+							<span class="feed_date">Sun, 09 Jan 2011 11:01:21 -0200</span>
+                            <input type="hidden" class="feed_description" value="Valor do Feed" />
+						</div>
+						<div class="feed b" id="feed">
+                    		<span class="feed_title">SIP divulga vídeos de riscos para jornalistas na Tríplice Fronteira</span>
+							<span class="feed_date">Sun, 09 Jan 2011 11:01:21 -0200</span>
+                            <input type="hidden" class="feed_description" value="Valor do Feed" />
+						</div>
+						<div class="feed a" id="feed">
+                    		<span class="feed_title">Partidos mantêm reservas a tentativa de governo na Bélgica</span>
+							<span class="feed_date">Sun, 09 Jan 2011 11:01:21 -0200</span>
+                            <input type="hidden" class="feed_description" value="Valor do Feed" />
+						</div>
+						<div class="feed b" id="feed">
+                    		<span class="feed_title">Israel: Lieberman quer UE vigiando fronteira Egito Gaza</span>
+							<span class="feed_date">Sun, 09 Jan 2011 11:01:21 -0200</span>
+                            <input type="hidden" class="feed_description" value="Valor do Feed" />
+						</div>
+						<div class="feed a" id="feed">
+                    		<span class="feed_title">EUA mantêm indicação de Palmer para embaixada em Caracas</span>
+							<span class="feed_date">Sun, 09 Jan 2011 11:01:21 -0200</span>
+                            <input type="hidden" class="feed_description" value="Valor do Feed" />
+						</div>
+						<div class="feed b" id="feed">
+                    		<span class="feed_title">Senador John McCain irá à Colômbia apoiar aprovação do TLC</span>
+							<span class="feed_date">Sun, 09 Jan 2011 11:01:21 -0200</span>
+                            <input type="hidden" class="feed_description" value="Valor do Feed" />
+						</div>
+						<div class="feed a" id="feed">
+                    		<span class="feed_title">Morre em Salzburgo turista alemão vítima do vírus H1N1</span>
+							<span class="feed_date">Sun, 09 Jan 2011 11:01:21 -0200</span>
+                            <input type="hidden" class="feed_description" value="Valor do Feed" />
+						</div>
+						<div class="feed b" id="feed">
+                    		<span class="feed_title">Jornal suspende diretor acusado de grampear telefones</span>
+							<span class="feed_date">Sun, 09 Jan 2011 11:01:21 -0200</span>
+                            <input type="hidden" id="feed_description" value="Valor do Feed" />
+						</div>
+						<div class="feed a" id="feed">
+                    		<span class="feed_title">Polícia frustra sequestro de voo entre Noruega e Turquia</span>
+							<span class="feed_date">Sun, 09 Jan 2011 11:01:21 -0200</span>
+                            <input type="hidden" class="feed_description" value="Valor do Feed" />
+						</div>
+						<div class="feed b" id="feed">
+                    		<span class="feed_title">Chávez promete 'triturar' oposição no Parlamento</span>
+							<span class="feed_date">Sun, 09 Jan 2011 11:01:21 -0200</span>
+                            <input type="hidden" class="feed_description" value="Valor do Feed" />
+						</div>
+                        <!-- <div class="feed" id="a"><a href="#">Saída de Gibbs marca início de remodelação na Casa Branca</a><span id="feed_date">Sun, 09 Jan 2011 11:01:21 -0200</span></div>
+                        <div class="feed" id="b"><a href="#">Bombeiros resgatam veado preso no gelo na Polônia</a><span id="feed_date">Sun, 09 Jan 2011 11:01:21 -0200</span></div>
+                        <div class="feed" id="a"><a href="#">EUA: casa é demolida por engano em Pittsburgh</a><span id="feed_date">Sun, 09 Jan 2011 11:01:21 -0200</span></div>
+                        <div class="feed" id="b"><a href="#">UE diz que ONU deve inspecionar instalações nucleares do Irã</a><span id="feed_date">Sun, 09 Jan 2011 11:01:21 -0200</span></div>
+                        <div class="feed" id="a"><a href="#">Hotel onde está Ouattara segue bloqueado até que rebeldes saiam</a><span id="feed_date">Sun, 09 Jan 2011 11:01:21 -0200</span></div>
+                        <div class="feed" id="b"><a href="#">Homem atira explosivo contra embaixada francesa em Mali</a><span id="feed_date">Sun, 09 Jan 2011 11:01:21 -0200</span></div>
+                        <div class="feed" id="a"><a href="#">Greve em Israel impede rara visita de um presidente russo</a><span id="feed_date">Sun, 09 Jan 2011 11:01:21 -0200</span></div>
+                        <div class="feed" id="b"><a href="#">Divulgadas mais duas mortes durante nevasca em Nova York</a><span id="feed_date">Sun, 09 Jan 2011 11:01:21 -0200</span></div>
+                        <div class="feed" id="a"><a href="#">EUA: legisladores propõem negar cidadania a filhos de ilegais</a><span id="feed_date">Sun, 09 Jan 2011 11:01:21 -0200</span></div>
+                        <div class="feed" id="b"><a href="#">Clérigo xiita Sadr, inimigo dos EUA, volta ao Iraque após exílio</a><span id="feed_date">Sun, 09 Jan 2011 11:01:21 -0200</span></div>
+                        <div class="feed" id="a"><a href="#">Bruxas lançam feitiços no governo por terem que pagar impostos</a><span id="feed_date">Sun, 09 Jan 2011 11:01:21 -0200</span></div>
+                        <div class="feed" id="b"><a href="#">EUA: republicano é eleito presidente da Câmara dos Deputados</a><span id="feed_date">Sun, 09 Jan 2011 11:01:21 -0200</span></div>
+                        <div class="feed" id="a"><a href="#">AI denuncia aumento da violência sexual contra haitianas</a><span id="feed_date">Sun, 09 Jan 2011 11:01:21 -0200</span></div>
+                        <div class="feed" id="b"><a href="#">Jordânia defende visita secreta de responsável israelense</a><span id="feed_date">Sun, 09 Jan 2011 11:01:21 -0200</span></div>
+                        <div class="feed" id="a"><a href="#">Oficial da tropa da ONU quer reforço na Costa do Marfim</a><span id="feed_date">Sun, 09 Jan 2011 11:01:21 -0200</span></div>
+                        <div class="feed" id="b"><a href="#">Gibbs confirma saída da Casa Branca para campanha de reeleição de Obama</a><span id="feed_date">Sun, 09 Jan 2011 11:01:21 -0200</span></div>
+                        <div class="feed" id="a"><a href="#">Fábrica de produtos químicos pega fogo e preocupa na Holanda</a><span id="feed_date">Sun, 09 Jan 2011 11:01:21 -0200</span></div>
+                        <div class="feed" id="b"><a href="#">Israel diz que alternativas palestinas para paz são "ilusão"</a><span id="feed_date">Sun, 09 Jan 2011 11:01:21 -0200</span></div>
+                        <div class="feed" id="a"><a href="#">Conselho de Segurança mostra preocupação com Costa do Marfim</a><span id="feed_date">Sun, 09 Jan 2011 11:01:21 -0200</span></div> -->
+           </section>
+		   
+		   <section id='conteudo'>
+<!-- feed.description -->		   			
+					<p>
+	O Tecnopuc, Parque Cient&iacute;fico e Tecnol&oacute;gico da PUC-RS, promove um encontro com a Funda&ccedil;&atilde;o de Amparo &agrave; Pesquisa do Rio Grande do Sul para apresentar o Projeto Doutor na Empresa, lan&ccedil;ado em 2010.</p>
+<p>
+	O evento ocorre na ter&ccedil;a-feira, 11, das 9h30 &agrave;s 10h30 (Av. Ipiranga, 6681).</p>
+<p>
+	Ministrada por J&ocirc;ni Franck Nunes Costa, diretor administrativo da Fapergs, a atividade visa detalhar o projeto que oferecer&aacute; 50 bolsas de estudos para profissionais com titula&ccedil;&atilde;o de doutor exercer pesquisa em ci&ecirc;ncia, tecnologia e inova&ccedil;&atilde;o em micro e pequenas empresas, que apresentem faturamento anual de at&eacute; R$ 2,4 milh&otilde;es.</p>
+<p>	As bolsas ter&atilde;o custo unit&aacute;rio de R$ 6 mil por m&ecirc;s durante 24 meses.</p>
+<p>	A Fapergs e o Sebrae-RS ir&atilde;o aplicar R$ 2,4 milh&otilde;es no projeto, resultando em recursos de R$ 4,8 milh&otilde;es.</p>
+<p>
+	Interessados em participar devem encaminhar e-mail para <strong>aline.flores@pucrs.br</strong> at&eacute; as 17h de segunda-feira, 10.</p>
+<div class="field field-type-link field-field-noticia-link">
+      <div class="field-label">Link:&nbsp;</div>
+    <div class="field-items">
+            <div class="field-item odd">
+                    <a href="http://www.pucrs.br/agt/tecnopuc/" target="_blank">Tecnopuc</a>        </div>
+              <div class="field-item even">
+                    <a href="http://www.fapergs.rs.gov.br/" target="_blank">Fapergs</a>        </div>
+              <div class="field-item odd">
+                    <a href="http://www.sebrae-rs.com.br/" target="_blank">Sebrae-RS</a>        </div>
+        </div>
+</div>
+<div class="field field-type-nodereference field-field-noticia-ref">
+      <div class="field-label">Noticias relacionadas:&nbsp;</div>
+    <div class="field-items">
+            <div class="field-item odd">
+                    <a href="http://www.baguete.com.br/noticias/negocios-e-gestao/09/12/2010/tecnopuc-quer-seguir-na-frente">Tecnopuc quer seguir na frente</a>        </div>
+              <div class="field-item even">
+                    <a href="http://www.baguete.com.br/noticias/hardware/14/06/2010/engeltec-sai-da-raiar-e-vai-para-o-tecnopuc">Engeltec sai da Raiar e vai para o Tecnopuc</a>        </div>
+              <div class="field-item odd">
+                    <a href="http://www.baguete.com.br/noticias/software/01/06/2010/ibm-e-accenture-vao-para-o-tecnopuc">IBM e Accenture vão para o Tecnopuc</a>        </div>
+        </div>
+</div>
+<!-- /feed.description -->		   		
+		   </section>
+        </div><!-- container -->
+    </body>
+</html>

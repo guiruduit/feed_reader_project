@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block lista_feeds %}
+
+<section id='lista_feaders'>
+    <div class="feader b" id="form_url_feader">
+        <form action="{% url feed_reader_app.views.adiciona_feader %}" method="POST"> {% csrf_token %}
+            <input id='url_entry' type="url" placeholder="Insira a URL aqui" name='url_feader' id='url_feader' autofocus /><!-- autofocus -->
+            <button id='button' type='submit'>Adicionar</button>
+        </form>
+	</div>
+    {% for feader in feaders %}
+    	<div class="feader {% cycle 'a' 'b' %}">
+            <span class="feader_title">{{ feader.title }}</span>
+        </div>
+    {% empty %}
+        <div class="feader a">
+            <span class="feader_title">Não há URLs cadastradas</span>
+        </div>
+    {% endfor %}
+</section>
+
+<section id='lista_feeds'>
+    {% for feed in feeds %}
+        <div class="feed {% cycle 'b' 'a' %}" id="{{ feed.id }}">
+            <span class="feed_title">{{ feed.title }}</span>
+            <span class="feed_date">{{ feed.date }}</span>
+            <input type="hidden" class="feed_content" value="{{ feed.content }}" />
+        </div>
+    {% empty %}
+        <div class="feed a">
+            <span class="feed_title">Não há Feeds.</span>
+        </div>
+    {% endfor %}
+</section>
+
+<section id='conteudo'>
+        <!-- feed.description -->
+</section>
+
+{% endblock lista_feeds %}
