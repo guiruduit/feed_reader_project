@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load uni_form_tags %}
+{% block body %}
+
+<section id="register">
+    <form action="." method="post">
+    {% csrf_token %}
+    {{ form|as_uni_form }}
+        <button type="submit">Register</button>
+    </form>
+</section>
+
+{% endblock body %}

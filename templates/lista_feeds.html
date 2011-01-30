@@ -1,35 +1,64 @@
 {% extends 'base.html' %}
+
 {% block body %}
 
+<header>
+	<div id="logout">
+		{{ user }} | <a href="/logout/">Logout</a>
+	</div>
+</header>
+
 <section id='lista_feaders'>
-    <div class="feader b" id="form_url_feader">
+    <div class="feader {% if feaders|length = 1 %}a{% else %}b{% endif %}" id="form_url_feader">
         <form action="{% url feed_reader_app.views.adiciona_feader %}" method="POST"> {% csrf_token %}
             <input id='url_entry' type="url" placeholder="Insira a URL aqui" name='url_feader' id='url_feader' autofocus /><!-- autofocus -->
             <button id='button' type='submit'>Adicionar</button>
         </form>
 	</div>
-    {% for feader in feaders %}
-    	<div class="feader {% cycle 'a' 'b' %}">
-            <span class="feader_title">{{ feader.title }}</span>
-        </div>
-    {% empty %}
+    {% if feaders %}
+        {% if feaders|length > 1 %}
         <div class="feader a">
-            <span class="feader_title">Não há URLs cadastradas</span>
+            <span class="feader_title">
+                <a href="{% url feed_reader_app.views.lista_feeds %}">Todos</a>
+            </span>
+            <a href="{% url feed_reader_app.views.refresh_feeds %}">
+                <img src="{{ MEDIA_URL }}img/icons/RefreshButtonOverIn.png">
+            </a>
         </div>
-    {% endfor %}
+        {% endif %}
+        {% for feader in feaders %}
+        	<div class="feader {% cycle 'b' 'a' %}">
+                <span class="feader_title">
+<!--                    <a href="{% url feed_reader_app.views.lista_feeds feader.id %}">{{ feader.title }}</a>-->
+                    <a href="{{ feader.get_absolute_url }}">{{ feader.title }}</a>
+                </span>
+                {% if feaders|length = 1 %}
+                <a href="{% url feed_reader_app.views.refresh_feeds %}">
+                    <img src="{{ MEDIA_URL }}img/RefreshButtonOverIn.png">
+                </a>
+                {% endif %}
+            </div>
+        {% empty %}
+            <div class="feader {% if feaders %}b{% else %}a{% endif %}">
+                <span class="feader_title">Não há URLs cadastradas</span>
+            </div>
+        {% endfor %}
+    {% endif %}
 </section>
 
 <section id='lista_feeds'>
-    {% for feed in feeds %}
+    {% for feed in feeds|dictsortreversed:"date" %}
+        {% if not feed.content %} ERRO {% endif %}
         <div class="feed {% cycle 'b' 'a' %}" id="{{ feed.id }}">
             <span class="feed_title">{{ feed.title }}</span>
+            <span class="feed_feader_title">{{ feed.feader }}</span>
             <span class="feed_date">{{ feed.date }}</span>
             <input type="hidden" class="feed_content" value="{{ feed.content }}" />
         </div>
     {% empty %}
-        <div class="feed a">
-            <span class="feed_title">Não há Feeds.</span>
-        </div>
+<!--        <div class="feed a">-->
+<!--            <span class="feed_title">Não há Feeds.</span>-->
+<!--        </div>-->
     {% endfor %}
 </section>
 

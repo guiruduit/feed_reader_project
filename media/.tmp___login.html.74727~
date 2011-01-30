@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset=utf-8>
+
+        <title>Feed Reader</title>
+
+        <meta name="keywords" content="keywords, here" />
+        <meta name="description" content="your description here" />
+
+        <script src="js/modernizr-1.1.min.js"></script><!-- this is the javascript allowing html5 to run in older browsers -->
+        <script src="js/jquery.js"></script>
+		<script type="text/javascript">
+            $(document).ready(function(){
+                $(".feed").click(function(){
+                    var c = $(this).children('.feed_content').val();
+                    $("#conteudo").html(c);
+                });
+            });
+		</script>
+
+        <link rel="stylesheet" type="text/css" href="css/reset.css" media="screen" title="html5doctor.com Reset Stylesheet" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
+    </head>
+    <body>
+        <div id='container'>
+            <section id="login">
+                <form action="." method="post">
+                    <span>
+                    	<label for="input_username">Username: </label>
+						<input id='input_username' type="text" placeholder="Insira seu Username" name='username' /><!-- autofocus -->	
+                    </span>
+					<span>
+						<label for="input_password">Password: </label>
+						<input id='input_password' type="password" placeholder="Insira sua Senha" name='password' />	
+					</span>
+                    <span>
+                    	<button type="submit">Login</button>
+					</span>
+                </form>
+            </section>
+			
+			<p>OR</p>
+			
+			<section id="join">
+				<form action="#" method="post">
+					<span>
+						<label for="input_username">Username: </label>
+						<input id='input_username' type="text" placeholder="Insira seu Username" name='username' />
+					</span>
+					<span>
+						<label for="input_password">Password: </label>
+						<input id="input_password" type="password" placeholder="Insira sua Senha" name='password' />
+					</span>
+					<span>
+						<label for="input_confirm_password">Confirm Password: </label>
+						<input id="input_confirm_password" type="password" placeholder="Confirme sua Senha" name='confirm_password' />
+					</span>
+					<span>
+						<label for="input_email">E-mail: </label>
+						<input id="input_email" type="email" placeholder="Insira seu E-mail" name='email' />
+					</span>
+					<span>
+						<button type="submit">Join</button>
+					</span>
+				</form>
+			</section>
+        </div>
+    </body>
+</html>

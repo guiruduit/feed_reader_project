@@ -1,0 +1,167 @@
+body {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	text-align: center;
+	background: #FEFEFE url("../img/patterns/1337.png");
+	width: 100%; height: 100%;
+}
+
+#input_username { placeholder: "Insira seu username"; autofocus; }
+
+#container {
+	width: inherit; height: inherit;
+	margin: 0 auto;
+	position: absolute;
+}
+
+header {
+	background: #0E0E0E;
+	overflow: hidden;
+}
+	
+	#logout {
+		float: right;
+		margin: 5px 20px 5px 5px;
+		display: block;
+		color: #FFF;
+	}
+		
+		#logout a {
+			text-decoration: none;
+			color: #DDD;
+		}
+		
+		#logout a:hover { color: #FFF; }
+
+#lista_feaders,
+#lista_feeds {
+	position: relative;
+	width: 48%;
+	left: 1%;
+	overflow: auto;
+	margin-top: 10px;
+}
+
+#lista_feaders { max-height: 10%; }
+
+	#lista_feaders a img {
+		width: 20px;
+		height: 20px;
+		float: right;
+		margin: 5px 30px;
+	}
+	
+	#lista_feaders a img:hover {
+		width: 25px;
+		height: 25px;
+		margin: 2.5px 30px;
+		cursor: pointer;
+	}
+
+#lista_feeds { max-height: 81.3%; }
+
+        .a { background: #fffff3; }
+
+        .b { background: #F8F0E2; }
+		
+		.feader,
+		.feed {
+			border: #D8D0C2 solid 1px;
+			height: 30px;
+			overflow: auto;
+		}
+		/*
+		.feader { overflow: hidden; }
+		.feed { overflow: auto; }
+		*/
+			.feader_title,
+			.feed_title
+			{
+				text-decoration: none;
+				color: #000;
+				font-size: 14px;
+				float: left;
+				text-align: left;
+				margin: 6px 5px 6px 5px;
+			}
+			
+				.feader_title a { text-decoration:none; color: #000; }
+
+			.feader_title:hover,
+			.feed_title:hover {
+				/* font-size: 18px; */
+				cursor: pointer;
+				/* width: 700px; */
+				margin: 2px 5px 10px 8px;
+				text-shadow: -4px 4px 0 #DDD;
+			}
+
+			.feed_date,
+			.feed_feader_title,
+			.feed_info {
+				float: right;
+				font-size: 10px;
+				margin: 6px 10px auto 0;
+				background-color: rgba(250, 250, 0, 0.1);
+			}
+									
+		#form_url_feader { padding: 6px 5px 3px 5px; }
+			
+			#form_url_feader * { float: left; }
+			
+			#url_entry {
+				width: 300px;
+				margin-right: 5px;
+			}
+			
+#conteudo {
+	/* vertical position: */
+	top: 39px;
+	position: absolute;
+	
+	/* horizontal position: */
+	left: 50%;
+	
+	/* layout: */
+	width: 48%;
+	border: #D8D0C2 solid 1px;
+	overflow: auto;
+	background: #fff;
+	max-height: 91%;
+	text-align: left;
+	padding: 5px;
+}
+
+/*
+#login,
+#join {
+	background-color: #F8F0E2;
+	border: #D8D0C2 solid 1px;
+	text-align: center;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+#login form span,
+#login form #button,
+#join form span,
+#join form #button {
+	display: block;
+	clear: both;
+}
+
+#login form span, #join form span { border-top: #D8D0C2 solid 1px; }
+#login form span *, #join form span * { margin: 5px; }
+#login form input, #join form input { float: right; width: 190px; }
+#login form label, #join form label { float: left; margin-top: 10px; } 
+
+#login {
+	margin: 10% auto 1% auto;
+	width: 280px;
+}
+
+#join {
+	margin: 1% auto;
+	width: 350px;
+}
+*/

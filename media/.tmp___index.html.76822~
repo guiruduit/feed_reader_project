@@ -28,12 +28,6 @@
 			
         <div id='container'>
 
-			<header>
-				<div id="logout">
-					guilherme | <a href="#">Logout</a>
-				</div>
-			</header>
-	
 			<section id='lista_feaders'>
 				<div class="feader a" id="form_url_feader">
 					
@@ -43,29 +37,17 @@
                 		</form>
 					
 				</div>
-				<div class="feader b">
-                    <span class="feader_title">
-                        <a href ='#'>Baguete</a>
-                    </span>
-					<a href="#">
-						<img src='img/icons/refresh_arrow.gif'>
-					</a>
-                </div>
-				<div class="feader a">
-                    <span class="feader_title">
-                        <a href='#'>Terra</a>
-                    </span>
-                </div>
+				<div class="feader b"><span class="feader_title">Baguete</span></div>
+				<div class="feader a"><span class="feader_title">Terra</span></div>
 			</section>
 
             <section id='lista_feeds'>
-                    	<div class="feed b" id="1">
+                    	<div class="feed b" id="feed">
                     		<span class="feed_title">CORREÇÃO Besouro "perigoso" é achado no aeroporto de Los Angeles</span>
 							<span class="feed_date">Sun, 09 Jan 2011 11:01:21 -0200</span>
-							<span class="feed_feader_title">Baguete - Últimas Noticias</span>
                             <input type="hidden" class="feed_description" value="Valor do Feed" />
 						</div>
-						<div class="feed a" id="2">
+						<div class="feed a" id="feed">
                     		<span class="feed_title">Carla Bruni nega intervenção para evitar extradição de Battisti</span>
 							<span class="feed_date">Sun, 09 Jan 2011 11:01:21 -0200</span>
                             <input type="hidden" class="feed_description" value="Valor do Feed" />

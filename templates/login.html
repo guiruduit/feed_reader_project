@@ -1,27 +1,15 @@
 {% extends 'base.html' %}
+{% load uni_form_tags %}
 {% block body %}
 
-{% if form.errors %}
-    {{ form.non_field_errors }}
-{% endif %}
+<section id="login">
+    <form action="." method="post">
+        {% csrf_token %}
+        {{ form|as_uni_form }}
+        <button type="submit">Login</button>
+    </form>
+</section>
 
-<form action="." method="post">
-    {% csrf_token %}
-    <table>
-        <tr>
-            <td>{{ form.username.label_tag }}</td>
-            <td>{{ form.username }}</td>
-        </tr>
-        <tr>
-            <td>{{ form.password.label }}</td>
-            <td>{{ form.password }}</td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <button type="submit">Login</button>
-            </td>
-        </tr>
-    </table>
-</form>
+<a href="{% url feed_reader_app.views.register %}">Cadastrar</a>
 
 {% endblock body %}
