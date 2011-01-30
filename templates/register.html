@@ -3,11 +3,13 @@
 {% block body %}
 
 <section id="register">
-    <form action="." method="post">
+    <form action="." method="post" class="uniForm">
     {% csrf_token %}
     {{ form|as_uni_form }}
         <button type="submit">Register</button>
     </form>
 </section>
+
+<a href="/login/">Login</a>
 
 {% endblock body %}

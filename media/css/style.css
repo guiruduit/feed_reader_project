@@ -131,37 +131,43 @@ header {
 	padding: 5px;
 }
 
-/*
+
 #login,
-#join {
+#register {
 	background-color: #F8F0E2;
 	border: #D8D0C2 solid 1px;
 	text-align: center;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
+	overflow: visible;
+	margin: 20% auto 0;
 }
 
-#login form span,
-#login form #button,
-#join form span,
-#join form #button {
-	display: block;
-	clear: both;
+#login { width: 400px; }
+#register { width: 460px; }
+
+#login button,
+#register button {
+	margin-bottom: 10px;
 }
 
-#login form span, #join form span { border-top: #D8D0C2 solid 1px; }
-#login form span *, #join form span * { margin: 5px; }
-#login form input, #join form input { float: right; width: 190px; }
-#login form label, #join form label { float: left; margin-top: 10px; } 
+#login .uniForm .ctrlHolder label,
+#login .uniForm .ctrlHolder input,
+#register .uniForm .ctrlHolder label,
+#register .uniForm .ctrlHolder input {
+	display:inline;
+} 
 
-#login {
-	margin: 10% auto 1% auto;
-	width: 280px;
+#login .uniForm .ctrlHolder label,
+#register .uniForm .ctrlHolder label { 
+	text-align: left;
+	float: left;
+	margin: 10px 10px 0 0;
 }
 
-#join {
-	margin: 1% auto;
-	width: 350px;
+#login .uniForm .ctrlHolder input,
+#register .uniForm .ctrlHolder input {
+	float: right;
+	width: 300px;
 }
-*/
