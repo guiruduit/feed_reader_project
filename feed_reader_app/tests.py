@@ -34,7 +34,7 @@ class TestAdicionaFeader(TestCase):
         self.client.logout()
 
         tam2 = 0
-        for feader in self.user1.feaders:
+        for feader in self.user1.feaders.all():
             tam2 += len(feader.feed_set.all())
         tam3 = len(self.baguete.entries) + len(self.globo.entries)
         self.failUnlessEqual(tam2, tam3)
@@ -86,3 +86,31 @@ class TestListaFeeds(TestCase):
 
         for feed in self.response.context['feeds']:
             self.failUnlessEqual(None, feed.validate_unique())
+
+class TestRemoveFeader(TestCase):
+
+    client = None
+    response = None
+    user1 = None
+    user2 = None
+
+    def setUp(self):
+        self.client = Client()
+        self.user1 = User.objects.create_user(username='user1', email='user1@mail.com', password='1').userprofile_set.create()
+        self.user2 = User.objects.create_user(username='user2', email='user2@mail.com', password='1').userprofile_set.create()
+
+    def test_adiciona_feader(self):
+        self.client.login(username='user1', password='1')
+        response = self.client.post('/adiciona_feader/', {'url_feader': 'feed_reader_app/__baguete.xml'})
+        response = self.client.post('/adiciona_feader/', {'url_feader': 'feed_reader_app/__globo.xml'})
+        self.failUnlessEqual(2, len(self.user1.feaders.all()))
+
+        feaders = Feader.objects.all()
+        id_ = feaders[0].id
+
+        tam_feaders_all = len(Feader.objects.all())
+        response = self.client.post('/remove_feader/%d/' % id_)
+        self.failUnlessEqual(tam_feaders_all - 1, len(self.user1.feaders.all()))
+        self.failUnlessEqual(2, len(Feader.objects.all()))
+
+

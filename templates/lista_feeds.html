@@ -34,9 +34,12 @@
                 </span>
                 {% if feaders|length = 1 %}
                 <a href="{% url feed_reader_app.views.refresh_feeds %}">
-                    <img src="{{ MEDIA_URL }}img/icons/RefreshButtonOverIn.png">
+                    <img src="{{ MEDIA_URL }}img/icons/AwOken/clear/24x24/actions/view-refresh.png">
                 </a>
                 {% endif %}
+                <a href="{% url feed_reader_app.views.remove_feader feader.id %}">
+                    <img src="{{ MEDIA_URL }}img/icons/AwOken/clear/24x24/actions/remove1.png">
+                </a>
             </div>
         {% empty %}
             <div class="feader {% if feaders %}b{% else %}a{% endif %}">
@@ -48,12 +51,15 @@
 
 <section id='lista_feeds'>
     {% for feed in feeds|dictsortreversed:"date" %}
-        {% if not feed.content %} ERRO {% endif %}
         <div class="feed {% cycle 'b' 'a' %}" id="{{ feed.id }}">
             <span class="feed_title">{{ feed.title }}</span>
             <span class="feed_feader_title">{{ feed.feader }}</span>
             <span class="feed_date">{{ feed.date }}</span>
             <input type="hidden" class="feed_content" value="{{ feed.content }}" />
+
+            <a href="{% url feed_reader_app.views.remove_feed feed.id %}">
+                <img src="{{ MEDIA_URL }}img/icons/AwOken/clear/24x24/actions/remove1.png">
+            </a>
         </div>
     {% empty %}
 <!--        <div class="feed a">-->

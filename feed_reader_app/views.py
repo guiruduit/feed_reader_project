@@ -65,3 +65,12 @@ def refresh_feeds(request):
     for feader in feaders:
         feader.refresh()
     return HttpResponseRedirect('/lista_feeds/')
+
+def remove_feader(request, selected_feader):
+    print selected_feader
+    feader = Feader.objects.get(pk=selected_feader)
+    UserProfile.objects.get(user=request.user).feaders.remove(feader)
+    return HttpResponseRedirect('/lista_feeds/')
+
+def remove_feed(request, selected_feed):
+    return HttpResponseRedirect('/lista_feeds/')
