@@ -9,67 +9,76 @@
 </header>
 
 <section id='lista_feaders'>
-    <div class="feader {% if feaders|length = 1 %}a{% else %}b{% endif %}" id="form_url_feader">
+
         <form action="{% url feed_reader_app.views.adiciona_feader %}" method="POST"> {% csrf_token %}
             <input id='url_entry' type="url" placeholder="Insira a URL aqui" name='url_feader' id='url_feader' autofocus /><!-- autofocus -->
-            <button id='button' type='submit'>Adicionar</button>
+            <input type="image" src="{{ MEDIA_URL }}img/icons/add1.png" alt="Adicionar">
+            <!-- <button id='button' type='submit'>Adicionar</button> -->
         </form>
-	</div>
+
     {% if feaders %}
+
         {% if feaders|length > 1 %}
-        <div class="feader a">
-            <span class="feader_title">
-                <a href="{% url feed_reader_app.views.lista_feeds %}">Todos</a>
-            </span>
-            <a href="{% url feed_reader_app.views.refresh_feeds %}">
-                <img src="{{ MEDIA_URL }}img/icons/RefreshButtonOverIn.png">
-            </a>
+        <div class="feader">
+            <div class="feader_header a">
+                <span class="feader_title">
+                    <a href="{% url feed_reader_app.views.lista_feeds %}">Todos</a>
+                </span>
+                <a href="{% url feed_reader_app.views.refresh_feeds %}">
+                    <img src="{{ MEDIA_URL }}img/icons/view-refresh.png">
+                </a>
+            </div>
         </div>
         {% endif %}
+
         {% for feader in feaders %}
-        	<div class="feader {% cycle 'b' 'a' %}">
+        <div class="feader">
+            <div class="feader_header {% cycle 'b' 'a' %}">
                 <span class="feader_title">
-<!--                    <a href="{% url feed_reader_app.views.lista_feeds feader.id %}">{{ feader.title }}</a>-->
+                    <!-- <a href="{% url feed_reader_app.views.lista_feeds feader.id %}">{{ feader.title }}</a> -->
                     <a href="{{ feader.get_absolute_url }}">{{ feader.title }}</a>
                 </span>
                 {% if feaders|length = 1 %}
                 <a href="{% url feed_reader_app.views.refresh_feeds %}">
-                    <img src="{{ MEDIA_URL }}img/icons/AwOken/clear/24x24/actions/view-refresh.png">
+                    <img src="{{ MEDIA_URL }}img/icons/view-refresh.png">
                 </a>
                 {% endif %}
                 <a href="{% url feed_reader_app.views.remove_feader feader.id %}">
-                    <img src="{{ MEDIA_URL }}img/icons/AwOken/clear/24x24/actions/remove1.png">
+                    <img src="{{ MEDIA_URL }}img/icons/remove1.png">
                 </a>
             </div>
+        </div>
         {% empty %}
-            <div class="feader {% if feaders %}b{% else %}a{% endif %}">
+        <div class="feader">
+            <div class="feader_header {% if feaders %}b{% else %}a{% endif %}">
                 <span class="feader_title">Não há URLs cadastradas</span>
             </div>
+        </div>
         {% endfor %}
+
     {% endif %}
+
 </section>
 
 <section id='lista_feeds'>
+
     {% for feed in feeds|dictsortreversed:"date" %}
-        <div class="feed {% cycle 'b' 'a' %}" id="{{ feed.id }}">
-            <span class="feed_title">{{ feed.title }}</span>
-            <span class="feed_feader_title">{{ feed.feader }}</span>
-            <span class="feed_date">{{ feed.date }}</span>
-            <input type="hidden" class="feed_content" value="{{ feed.content }}" />
+    <div class="feed" id="{{ feed.id }}">
+        <div class="feed_header {% cycle 'b' 'a' %}">
 
             <a href="{% url feed_reader_app.views.remove_feed feed.id %}">
-                <img src="{{ MEDIA_URL }}img/icons/AwOken/clear/24x24/actions/remove1.png">
+                <img src="{{ MEDIA_URL }}img/icons/remove1.png">
             </a>
-        </div>
-    {% empty %}
-<!--        <div class="feed a">-->
-<!--            <span class="feed_title">Não há Feeds.</span>-->
-<!--        </div>-->
-    {% endfor %}
-</section>
 
-<section id='conteudo'>
-        <!-- feed.description -->
+            <span class="feed_title">{{ feed.title|striptags }}</span>
+            <span class="feed_date">{{ feed.date }}</span>
+            <span class="feed_feader_title">{{ feed.feader }}</span>
+        </div>
+
+        <div class="feed_content">{{ feed.content|safe }}</div>
+    </div>
+    {% endfor %}
+
 </section>
 
 {% endblock body %}

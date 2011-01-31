@@ -112,5 +112,3 @@ class TestRemoveFeader(TestCase):
         response = self.client.post('/remove_feader/%d/' % id_)
         self.failUnlessEqual(tam_feaders_all - 1, len(self.user1.feaders.all()))
         self.failUnlessEqual(2, len(Feader.objects.all()))
-
-

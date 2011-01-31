@@ -1,6 +1,6 @@
 $(document).ready(function(){
+    $(".feed_content").toggle();
     $(".feed").click(function(){
-        var c = $(this).children('.feed_content').val();
-        $("#conteudo").html(c);
+        $(this).children(".feed_content").slideToggle();
     });
 });
