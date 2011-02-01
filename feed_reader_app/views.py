@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Project:
-from models import Feader, UserProfile
+from models import Feader, Feed, UserProfile
 # Django:
 from django.shortcuts import render_to_response
 from django.template import RequestContext
@@ -58,6 +58,11 @@ def lista_feeds(request, selected_feader=None):
         feeds = []
         for feader in feaders:
             feeds.extend(feader.feed_set.all())
+
+    excl_feeds = UserProfile.objects.get(user=request.user).excl_feeds.all()
+    for excl_feed in excl_feeds:
+        feeds.remove(excl_feed)
+
     return render_to_response('lista_feeds.html', {'feaders': feaders, 'feeds': feeds}, context_instance=RequestContext(request))
 
 def refresh_feeds(request):
@@ -73,4 +78,10 @@ def remove_feader(request, selected_feader):
     return HttpResponseRedirect('/lista_feeds/')
 
 def remove_feed(request, selected_feed):
+    feed = Feed.objects.get(pk=selected_feed)
+    UserProfile.objects.get(user=request.user).excl_feeds.add(feed)
+#    return HttpResponseRedirect('/lista_feeds/')
+
+def restore_excl_feeds(request):
+    UserProfile.objects.get(user=request.user).excl_feeds.clear()
     return HttpResponseRedirect('/lista_feeds/')

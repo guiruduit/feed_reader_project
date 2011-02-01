@@ -24,6 +24,7 @@ urlpatterns = patterns('',
     (r'^register/$', 'feed_reader_app.views.register'),
     (r'^remove_feader/(?P<selected_feader>\d+)/$', 'feed_reader_app.views.remove_feader'),
     (r'^remove_feed/(?P<selected_feed>\d+)/$', 'feed_reader_app.views.remove_feed'),
+    (r'^restore_excl_feeds/$', 'feed_reader_app.views.restore_excl_feeds'),
 )
 
 from django.conf import settings

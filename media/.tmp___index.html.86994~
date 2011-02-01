@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset=utf-8>
+
+        <title>Feed Reader</title>
+
+        <meta name="keywords" content="keywords, here" />
+        <meta name="description" content="your description here" />
+
+        <script src="js/modernizr-1.1.min.js"></script><!-- this is the javascript allowing html5 to run in older browsers -->
+		<script src="js/jquery.js"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$(".feed_content").toggle();
+				$(".feed").click(function(){
+					$(this).children(".feed_content").toggle();
+				});
+				
+				$("#button-search").click(function(){
+					var text = $("#search").val();
+			
+					if ( $(".feed").children(".feed_header").children(".feed_title:not(:contains(" + text + "))") ) {
+						$(this).hide();
+					} else {
+						$(this).show();
+					}
+				}); // #button-search.click
+				
+				$(".feed").children(".feed_header").children("a").children("img").click(function(){
+					$(this).toggle();
+				});
+				
+			}); // document.ready
+		</script>
+
+        <link rel="stylesheet" type="text/css" href="css/reset.css" media="screen" title="html5doctor.com Reset Stylesheet" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
+    </head>
+    <body>
+        <div id='container'>
+			<header><div id="logout">guilherme | <a href="#">Logout</a></div></header>
+			<!-- <input id="search" type="text" /> -->
+	
+			<section id='lista_feaders'>
+				
+				<form method='POST'>
+                	<input id='url_entry' type="url" placeholder="Insira a URL aqui" name='url_feader' id='url_feader' />
+                	<input type="image" src="img/icons/add1.png" alt="Adicionar">
+					<!-- <button id='button' type='submit' value="Enviar">
+                		Adicionar
+					</button> -->
+                </form>
+								
+				<div class="feader">
+					<div class="feader_header b">
+						<span class="feader_title"><a href ='#'>Todos</a></span>
+						<!-- <a href="#"><img src='img/icons/refresh_arrow.gif'></a> -->	
+					</div>
+                </div>
+				
+				<div class="feader">
+					<div class="feader_header a">
+						<span class="feader_title"><a href='#'>Baguete</a></span>	
+					</div>
+                </div>
+				
+				<div class="feader">
+					<div class="feader_header b">
+						<span class="feader_title"><a href='#'>Terra</a></span>	
+					</div>
+                </div>
+				
+			</section>
+			
+            <section id='lista_feeds'>
+                    
+				<form method='POST'>
+                	<input id='search' type="search" />
+                	<input id="button-search" type="image" src="img/icons/system-search.png" alt="Procurar">
+				</form>
+					
+				<div class="feed" id="1">
+                	<div class="feed_header b">
+                		<span class="feed_title">CORREÇÃO Besouro "perigoso" é achado no aeroporto de Los Angeles</span>
+						<span class="feed_date">Sun, 09 Jan 2011 11:01:21 -0200</span>
+						<span class="feed_feader_title">Baguete - Últimas Noticias</span>
+					</div><!-- feed_header -->
+                    <div class="feed_content">
+                    	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </div>
+				</div><!-- feed -->
+						
+						<div class="feed" id="1">
+                    		<div class="feed_header a">
+                    			<span class="feed_title">CORREÇÃO Besouro "perigoso" é achado no aeroporto de Los Angeles</span>
+								<span class="feed_date">Sun, 09 Jan 2011 11:01:21 -0200</span>
+								<span class="feed_feader_title">Baguete - Últimas Noticias</span>
+							</div><!-- feed_header -->
+                            <div class="feed_content">
+                    			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </div>
+						</div><!-- feed -->
+						
+						<div class="feed" id="1">
+                    		<div class="feed_header b">
+                    			<span class="feed_title">CORREÇÃO Besouro "perigoso" é achado no aeroporto de Los Angeles</span>
+								<span class="feed_date">Sun, 09 Jan 2011 11:01:21 -0200</span>
+								<span class="feed_feader_title">Baguete - Últimas Noticias</span>
+							</div><!-- feed_header -->
+                            <div class="feed_content">
+                    			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </div>
+						</div><!-- feed -->
+						
+						<div class="feed" id="1">
+                    		<div class="feed_header a">
+                    			<span class="feed_title">CORREÇÃO Besouro "perigoso" é achado no aeroporto de Los Angeles</span>
+								<span class="feed_date">Sun, 09 Jan 2011 11:01:21 -0200</span>
+								<span class="feed_feader_title">Baguete - Últimas Noticias</span>
+							</div><!-- feed_header -->
+                            <div class="feed_content">
+                    			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </div>
+						</div><!-- feed -->
+						
+						<div class="feed" id="1">
+                    		<div class="feed_header b">
+                    			<span class="feed_title">CORREÇÃO Besouro "perigoso" é achado no aeroporto de Los Angeles</span>
+								<span class="feed_date">Sun, 09 Jan 2011 11:01:21 -0200</span>
+								<span class="feed_feader_title">Baguete - Últimas Noticias</span>
+							</div><!-- feed_header -->
+                            <div class="feed_content">
+                    			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </div>
+						</div><!-- feed -->
+		</section>
+		   
+		   <!-- <section id='conteudo'>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.		   		
+		   </section> -->
+        </div><!-- container -->
+    </body>
+</html>

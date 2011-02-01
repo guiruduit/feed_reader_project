@@ -44,7 +44,7 @@
                 </a>
                 {% endif %}
                 <a href="{% url feed_reader_app.views.remove_feader feader.id %}">
-                    <img src="{{ MEDIA_URL }}img/icons/remove1.png">
+                    <img src="{{ MEDIA_URL }}img/icons/application-exit1.png">
                 </a>
             </div>
         </div>
@@ -60,15 +60,22 @@
 
 </section>
 
+<!-- <form method='' id="search-form"> -->
+<span id="search-form">
+   	<input id='search' type="search" />
+  	<input id="button-search" type="image" src="{{ MEDIA_URL }}img/icons/system-search.png" alt="Procurar">
+</span>
+<!-- </form> -->
+
+<span id="restore-feeds"><a href="{% url feed_reader_app.views.restore_excl_feeds %}">Restaurar Feeds</a></span>
+
 <section id='lista_feeds'>
 
     {% for feed in feeds|dictsortreversed:"date" %}
     <div class="feed" id="{{ feed.id }}">
         <div class="feed_header {% cycle 'b' 'a' %}">
 
-            <a href="{% url feed_reader_app.views.remove_feed feed.id %}">
-                <img src="{{ MEDIA_URL }}img/icons/remove1.png">
-            </a>
+            <img src="{{ MEDIA_URL }}img/icons/remove1.png">
 
             <span class="feed_title">{{ feed.title|striptags }}</span>
             <span class="feed_date">{{ feed.date }}</span>

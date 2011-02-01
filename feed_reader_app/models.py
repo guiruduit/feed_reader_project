@@ -104,6 +104,7 @@ class UserProfile(models.Model):
 
     user = models.ForeignKey(User, unique=True, blank=False)
     feaders = models.ManyToManyField(Feader)
+    excl_feeds = models.ManyToManyField(Feed)
 
     def __unicode__(self):
         return self.user.username
