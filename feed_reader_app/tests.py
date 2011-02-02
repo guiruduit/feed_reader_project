@@ -99,7 +99,7 @@ class TestRemoveFeader(TestCase):
         self.user1 = User.objects.create_user(username='user1', email='user1@mail.com', password='1').userprofile_set.create()
         self.user2 = User.objects.create_user(username='user2', email='user2@mail.com', password='1').userprofile_set.create()
 
-    def test_adiciona_feader(self):
+    def test_remove_feader(self):
         self.client.login(username='user1', password='1')
         response = self.client.post('/adiciona_feader/', {'url_feader': 'feed_reader_app/__baguete.xml'})
         response = self.client.post('/adiciona_feader/', {'url_feader': 'feed_reader_app/__globo.xml'})
@@ -112,3 +112,35 @@ class TestRemoveFeader(TestCase):
         response = self.client.post('/remove_feader/%d/' % id_)
         self.failUnlessEqual(tam_feaders_all - 1, len(self.user1.feaders.all()))
         self.failUnlessEqual(2, len(Feader.objects.all()))
+
+class TestRemoveFeed(TestCase):
+
+    client = None
+    response = None
+    user1 = None
+    user2 = None
+
+    def setUp(self):
+        self.client = Client()
+        self.user1 = User.objects.create_user(username='user1', email='user1@mail.com', password='1').userprofile_set.create()
+        self.user2 = User.objects.create_user(username='user2', email='user2@mail.com', password='1').userprofile_set.create()
+
+    def test_remove_feed(self):
+        self.client.login(username='user1', password='1')
+        response = self.client.post('/adiciona_feader/', {'url_feader': 'feed_reader_app/__globo.xml'})
+
+        feaders = Feader.objects.all()
+        id_ = feaders[0].id
+
+        feeds = []
+        feeds.extend(self.user1.feaders.get(id=id_).feed_set.all())
+        tam1 = len(feeds)
+
+        id_ = feeds[0].id
+
+        self.client.get('/remove_feed/%d/' % id_)
+        excl_feeds = self.user1.excl_feeds.all()
+        self.failUnlessEqual(1, len(excl_feeds))
+        for excl_feed in excl_feeds:
+            feeds.remove(excl_feed)
+        self.failUnlessEqual(tam1 - 1, len(feeds))

@@ -8,6 +8,17 @@
 	</div>
 </header>
 
+<section id="bar">
+    <span id="restore-feeds"><a href="{% url feed_reader_app.views.restore_excl_feeds %}">Restaurar Feeds Excluídos</a></span>
+
+    <!-- <form method='' id="search-form"> -->
+    <span id="search-form">
+       	<input id='search' type="search" placeholder="Insira palavras-chave aqui" />
+      	<input id="button-search" type="image" src="{{ MEDIA_URL }}img/icons/system-search.png" alt="Procurar">
+    </span>
+    <!-- </form> -->
+</section>
+
 <section id='lista_feaders'>
 
         <form action="{% url feed_reader_app.views.adiciona_feader %}" method="POST"> {% csrf_token %}
@@ -59,15 +70,6 @@
     {% endif %}
 
 </section>
-
-<!-- <form method='' id="search-form"> -->
-<span id="search-form">
-   	<input id='search' type="search" />
-  	<input id="button-search" type="image" src="{{ MEDIA_URL }}img/icons/system-search.png" alt="Procurar">
-</span>
-<!-- </form> -->
-
-<span id="restore-feeds"><a href="{% url feed_reader_app.views.restore_excl_feeds %}">Restaurar Feeds</a></span>
 
 <section id='lista_feeds'>
 

@@ -9,6 +9,6 @@ $(document).ready(function(){
         _id = feed.attr("id");
         feed.hide();
         $.get("/remove_feed/" + _id + "/", {}, 'html');
-        //return false;
+        return false;
     }); // .feed... .click
 });

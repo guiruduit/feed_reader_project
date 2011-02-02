@@ -80,7 +80,7 @@ def remove_feader(request, selected_feader):
 def remove_feed(request, selected_feed):
     feed = Feed.objects.get(pk=selected_feed)
     UserProfile.objects.get(user=request.user).excl_feeds.add(feed)
-#    return HttpResponseRedirect('/lista_feeds/')
+    return HttpResponseRedirect('/lista_feeds/')
 
 def restore_excl_feeds(request):
     UserProfile.objects.get(user=request.user).excl_feeds.clear()
